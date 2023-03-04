@@ -1,4 +1,4 @@
-module umbrellaTest
+module github.com/enchik0reo/umbrellaTest
 
 go 1.19
 

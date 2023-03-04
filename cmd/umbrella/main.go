@@ -1,7 +1,7 @@
 package main
 
 import (
-	"umbrellaTest/internal/pkg/app"
+	"github.com/enchik0reo/umbrellaTest/internal/pkg/app"
 )
 
 func main() {

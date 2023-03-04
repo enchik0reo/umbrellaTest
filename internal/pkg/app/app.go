@@ -2,9 +2,10 @@ package app
 
 import (
 	"log"
-	"umbrellaTest/internal/app/endpoint"
-	"umbrellaTest/internal/app/mw"
-	"umbrellaTest/internal/app/service"
+
+	"github.com/enchik0reo/umbrellaTest/internal/app/endpoint"
+	"github.com/enchik0reo/umbrellaTest/internal/app/mw"
+	"github.com/enchik0reo/umbrellaTest/internal/app/service"
 
 	"github.com/labstack/echo/v4"
 )

@@ -1,11 +1,10 @@
 package app
 
 import (
-	"log"
-
 	"github.com/enchik0reo/umbrellaTest/internal/app/endpoint"
 	"github.com/enchik0reo/umbrellaTest/internal/app/mw"
 	"github.com/enchik0reo/umbrellaTest/internal/app/service"
+	"github.com/enchik0reo/umbrellaTest/internal/config"
 
 	"github.com/labstack/echo/v4"
 )
@@ -14,6 +13,7 @@ type App struct {
 	e    *endpoint.Endpoint
 	s    *service.Service
 	echo *echo.Echo
+	c    *config.Config
 }
 
 func New() *App {
@@ -25,16 +25,16 @@ func New() *App {
 
 	a.echo = echo.New()
 
-	a.echo.Use(mw.CheckRole)
+	a.c = config.GetConfig()
 
-	a.echo.GET("/timer", a.e.Timer)
+	a.echo.GET("/timer", a.e.Timer, mw.CheckRole)
 
 	return a
 }
 
 func (a *App) Run() {
-	err := a.echo.Start(":4000")
+	err := a.echo.Start(a.c.Port)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }
